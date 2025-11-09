@@ -11,7 +11,7 @@ const MovieRecommendation = () => {
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const inputRef = useRef(null);
+  // const inputRef = useRef(null);
 
   // 🔍 Fetch movie suggestions from backend
   useEffect(() => {
