@@ -10,7 +10,6 @@ import {
   FaShareAlt,
   FaDownload,
   FaTrash,
-  FaCheckCircle,
 } from "react-icons/fa";
 
 const ImageToTextOCR = () => {
