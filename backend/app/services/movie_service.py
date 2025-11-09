@@ -9,13 +9,13 @@ os.makedirs(DATA_DIR, exist_ok=True)
 
 # Google Drive file IDs
 MOVIES_METADATA_ID = "11_a3rVTXVw_F6mv1qqsq-XGjZ_e7QHuO"
-# CREDITS_ID = "1r0yOgYMSdz6_LAxqd4ueEsoGGjI-R6wd"
+CREDITS_ID = "1r0yOgYMSdz6_LAxqd4ueEsoGGjI-R6wd"
 KEYWORDS_ID = "1Vei57ijtxCwZP5rBx6MwWPIPZKBrtq-f"
 RATINGS_ID = "1v0tyeehPs5b0ce25q5m1E6WjuXHGMlJ2"
 
 FILES = {
     "movies_metadata.csv": MOVIES_METADATA_ID,
-    # "credits.csv": CREDITS_ID,
+    "credits.csv": CREDITS_ID,
     "keywords.csv": KEYWORDS_ID,
     "ratings_small.csv": RATINGS_ID,
 }
@@ -35,15 +35,15 @@ def load_and_prepare_movies():
     download_from_drive()
 
     movies = pd.read_csv(os.path.join(DATA_DIR, "movies_metadata.csv"), low_memory=False)
-    # credits = pd.read_csv(os.path.join(DATA_DIR, "credits.csv"))
+    credits = pd.read_csv(os.path.join(DATA_DIR, "credits.csv"))
     
     # Basic cleaning
     movies = movies[['id', 'title', 'overview', 'genres', 'poster_path', 'vote_average', 'release_date']]
-    # credits = credits[['movie_id', 'cast', 'crew']]
-    # credits.rename(columns={'movie_id': 'id'}, inplace=True)
+    credits = credits[['movie_id', 'cast', 'crew']]
+    credits.rename(columns={'movie_id': 'id'}, inplace=True)
     
     # Merge both datasets
-    # df = movies.merge(credits, on="id", how="left")
+    df = movies.merge(credits, on="id", how="left")
 
     # Handle missing
     df.dropna(subset=['overview'], inplace=True)
