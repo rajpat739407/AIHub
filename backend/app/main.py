@@ -9,7 +9,7 @@ app = FastAPI(title="RajAIHub API", description="Image to Text + Movie Recommend
 # ✅ Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://aihub-iw78.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
