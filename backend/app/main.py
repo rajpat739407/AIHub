@@ -24,3 +24,8 @@ app.include_router(text_routes.router)
 def root():
     return {"message": "AIHub Backend is Live!"}
 
+@app.on_event("startup")
+async def startup_event():
+    print("🚀 AIHub Backend started successfully on Render.")
+
+
